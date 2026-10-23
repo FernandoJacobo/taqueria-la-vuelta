@@ -134,9 +134,9 @@ Todas planas, 2–4 tintas, trazo de humo de 3–4 px, definidas una vez como `<
 
 | Qué | Cómo | Reduced motion |
 |---|---|---|
-| Trompo girando | `translateX` infinito de franjas dentro del clip, 6 s lineal | detenido |
+| Trompo girando | `translateX` infinito de las manchas de dorado dentro del clip, 5 s lineal | detenido |
 | Cambio de color del salsero | `transition: background-color, color 450ms` | instantáneo |
-| Marquee | `translateX` infinito, 40 s | estático (texto envuelve) |
+| Marquee | `translateX` infinito, 48 s | estático (texto envuelve) |
 | Stickers al hover | `rotate(-6deg)` 150 ms | sin rotación |
 | Barra de comanda | sube con `translateY` al tener platillos | aparece sin movimiento |
 

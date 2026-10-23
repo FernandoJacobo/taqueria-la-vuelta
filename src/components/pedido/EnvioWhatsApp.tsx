@@ -55,7 +55,7 @@ export function useEnvioWhatsApp(titulo = "Vista previa del pedido") {
           <p className="text-sm">
             En un sitio real, esto se envía por WhatsApp al número de la taquería. Aquí solo te enseñamos cómo llegaría:
           </p>
-          <pre className="renglones mt-4 max-h-[45dvh] overflow-auto whitespace-pre-wrap border-2 border-dashed border-humo bg-papel p-4 font-cuerpo text-sm leading-8">
+          <pre className="renglones mt-4 max-h-[45dvh] overflow-auto whitespace-pre-wrap border-2 border-dashed border-humo bg-papel bg-[position:0_1rem] p-4 font-cuerpo text-sm leading-8">
             {mensaje}
           </pre>
           <div className="mt-5 flex flex-wrap gap-3">

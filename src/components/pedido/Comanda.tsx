@@ -107,7 +107,7 @@ export function Comanda() {
       >
         <div className="flex h-full flex-col border-[3px] border-b-0 border-humo bg-tortilla text-humo lg:border-y-0 lg:border-r-0">
           <header className="flex items-center justify-between gap-3 bg-humo px-5 py-4 text-tortilla">
-            <h2 id={tituloId} className="font-cartel text-rotulo uppercase leading-none">
+            <h2 id={tituloId} className="font-cartel text-[clamp(2rem,6vw,2.75rem)] uppercase leading-none">
               Comanda
             </h2>
             <button type="button" onClick={cerrarComanda} className="min-h-11 border-[3px] border-tortilla px-4 font-bold">
