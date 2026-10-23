@@ -4,9 +4,12 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "eslint"
+    "build": "next build && node scripts/postbuild.mjs",
+    "lint": "eslint",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "servir": "node scripts/servir-out.mjs",
+    "qa": "node scripts/qa-visual.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.9.2",
