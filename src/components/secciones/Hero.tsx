@@ -55,7 +55,7 @@ export function Hero() {
         <div className="relative col-span-9 col-start-4 -mt-4 sm:col-span-6 sm:col-start-7 sm:-mt-40 md:-mt-52 lg:col-span-5 lg:col-start-8 lg:row-span-3 lg:row-start-1 lg:mt-0">
           <NotaMarcador
             flecha="abajo"
-            className="absolute -left-[38%] top-[26%] z-20 w-24 -rotate-6 text-roja sm:-left-[45%] sm:top-[20%] sm:w-32 lg:left-[4%] lg:top-[3%] lg:w-40"
+            className="absolute -left-[38%] top-[26%] z-20 w-24 -rotate-6 text-roja sm:-left-[62%] sm:top-[46%] sm:w-36 lg:left-[4%] lg:top-[3%] lg:w-40"
           >
             sí hay de suadero
           </NotaMarcador>

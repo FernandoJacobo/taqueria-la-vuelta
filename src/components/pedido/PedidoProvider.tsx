@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useCallback, useContext, useEffect, useMemo, useReducer, useRef, useState, type ReactNode } from "react";
+import { createContext, useCallback, useContext, useEffect, useMemo, useReducer, useState, type ReactNode } from "react";
 import { PEDIDO_VACIO, reducirPedido, totalesPedido, type AccionPedido, type EstadoPedido } from "@/lib/pedido";
 
 const CLAVE_STORAGE = "la-vuelta:comanda:v1";
@@ -19,30 +19,37 @@ type ContextoPedido = {
 const Contexto = createContext<ContextoPedido | null>(null);
 
 export function PedidoProvider({ children }: { children: ReactNode }) {
-  const [estado, despachar] = useReducer((e: EstadoPedido, a: AccionPedido) => reducirPedido(e, a), PEDIDO_VACIO);
+  // `listo` se vuelve true con la acción "hidratar": hasta entonces no se escribe en localStorage
+  // (si no, el primer render guardaría la comanda vacía encima de la guardada).
+  const [{ pedido: estado, listo }, despachar] = useReducer(
+    (s: { pedido: EstadoPedido; listo: boolean }, a: AccionPedido) => ({
+      pedido: reducirPedido(s.pedido, a),
+      listo: s.listo || a.tipo === "hidratar",
+    }),
+    { pedido: PEDIDO_VACIO, listo: false },
+  );
   const [comandaAbierta, setComandaAbierta] = useState(false);
   const [aviso, setAviso] = useState("");
-  const hidratado = useRef(false);
 
   // Leer la comanda guardada (solo en el navegador, después de hidratar).
   useEffect(() => {
+    let guardado: unknown = null;
     try {
-      const guardado = window.localStorage.getItem(CLAVE_STORAGE);
-      if (guardado) despachar({ tipo: "hidratar", estado: JSON.parse(guardado) });
+      guardado = JSON.parse(window.localStorage.getItem(CLAVE_STORAGE) ?? "null");
     } catch {
       // localStorage bloqueado o JSON corrupto: se empieza con la comanda vacía.
     }
-    hidratado.current = true;
+    despachar({ tipo: "hidratar", estado: guardado as EstadoPedido });
   }, []);
 
   useEffect(() => {
-    if (!hidratado.current) return;
+    if (!listo) return;
     try {
       window.localStorage.setItem(CLAVE_STORAGE, JSON.stringify(estado));
     } catch {
       // Sin almacenamiento disponible: la comanda vive solo en esta pestaña.
     }
-  }, [estado]);
+  }, [estado, listo]);
 
   const anunciar = useCallback((texto: string) => {
     // Vaciar primero para que se vuelva a anunciar el mismo texto.

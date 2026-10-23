@@ -57,8 +57,8 @@ export function Pie() {
 
         {/* El nombre se sale por abajo */}
         <div className="relative mt-16 sm:mt-24">
-          <Trompo id="pie" className="pointer-events-none absolute bottom-[38%] right-[7%] w-20 rotate-[8deg] sm:w-28 lg:w-36" />
-          <p aria-hidden="true" className="relative -mb-[0.26em] whitespace-nowrap text-center font-cartel text-[clamp(3.4rem,13vw,16rem)] uppercase leading-[0.8] tracking-[-0.03em] text-tortilla">
+          <Trompo id="pie" className="pointer-events-none absolute bottom-[52%] right-[3%] w-16 rotate-[8deg] sm:bottom-[46%] sm:w-24 lg:right-[5%] lg:w-32" />
+          <p aria-hidden="true" className="relative -mb-[0.17em] whitespace-nowrap text-center font-cartel text-[clamp(3.4rem,13vw,16rem)] uppercase leading-[0.8] tracking-[-0.03em] text-tortilla">
             {site.nombre}
           </p>
         </div>
