@@ -75,7 +75,8 @@ compilar, así que en Cloudflare Pages también hay que definirla en *Settings �
 1. Conecta el repositorio en Cloudflare Pages.
 2. **Build command:** `npm run build`
 3. **Build output directory:** `out`
-4. Variable de entorno `NODE_VERSION=22` (y `NEXT_PUBLIC_WHATSAPP` si se quiere el envío real).
+4. Node 22 se toma de `.nvmrc` (o define `NODE_VERSION=22`). `NEXT_PUBLIC_WHATSAPP` solo si se quiere el envío real.
+5. `public/_headers` agrega caché larga a `_next/static` y cabeceras básicas de seguridad.
 
 `trailingSlash: true` genera `ruta/index.html`, que Pages sirve sin configuración extra, y `404.html` se usa para las
 rutas inexistentes.
